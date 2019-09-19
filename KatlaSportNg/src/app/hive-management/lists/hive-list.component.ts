@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HiveListItem } from '../models/hive-list-item';
 import { HiveService } from '../services/hive.service';
+import { HiveSectionListItem } from '../models/hive-section-list-item';
 
 @Component({
   selector: 'app-hive-list',
@@ -10,11 +11,17 @@ import { HiveService } from '../services/hive.service';
 export class HiveListComponent implements OnInit {
 
   hives: HiveListItem[];
+  route: any;
+  hiveId: any;
+  hiveSections: HiveSectionListItem[];
 
   constructor(private hiveService: HiveService) { }
 
   ngOnInit() {
-    this.getHives();
+    this.route.params.subscribe(p => {
+      this.hiveId = p['id'];
+      this.hiveService.getHiveSections(this.hiveId).subscribe(s => this.hiveSections = s);
+    })
   }
 
   getHives() {
@@ -28,4 +35,6 @@ export class HiveListComponent implements OnInit {
 
   onRestore(hiveId: number) {
   }
+
+  
 }
