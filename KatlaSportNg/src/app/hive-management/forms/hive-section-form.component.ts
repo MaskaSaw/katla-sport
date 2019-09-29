@@ -10,7 +10,8 @@ import { HiveSection } from '../models/hive-section';
 })
 export class HiveSectionFormComponent implements OnInit {
 
-  hiveSection = new HiveSection(0, "", "", 0, false, "");
+  hiveId : number;
+  hiveSection = new HiveSection(0, "", "", 0 ,false, "");
   existed = false;
 
   constructor(
@@ -34,19 +35,23 @@ export class HiveSectionFormComponent implements OnInit {
     });
   }
 
-  navigateToHiveSections() {
-    this.router.navigate([`/hive/${this.hiveSection.storeHiveId}/sections`]);
-  }
+  navigateToSections() {
+    if (this.hiveId === undefined)
+    {
+    this.hiveId = this.hiveSection.storeHiveId;
+    }
+    this.router.navigate([`/hive/${this.hiveId}/sections`]);
+    }
 
   onCancel() {
-    this.navigateToHiveSections();
+    this.navigateToSections();
   }
   
   onSubmit() {
     if (this.existed) {
-      this.hiveSectionService.updateHiveSection(this.hiveSection).subscribe(c => this.navigateToHiveSections());
+      this.hiveSectionService.updateHiveSection(this.hiveSection).subscribe(c => this.navigateToSections());
     } else {
-      this.hiveSectionService.addHiveSection(this.hiveSection).subscribe(c => this.navigateToHiveSections());
+      this.hiveSectionService.addHiveSection(this.hiveSection).subscribe(c => this.navigateToSections());
     }
   }
 
@@ -60,6 +65,6 @@ export class HiveSectionFormComponent implements OnInit {
   }
 
   onPurge() {
-    this.hiveSectionService.deleteHiveSection(this.hiveSection.id).subscribe(p => this.navigateToHiveSections());
+    this.hiveSectionService.deleteHiveSection(this.hiveSection.id).subscribe(p => this.navigateToSections());
   }
 }
