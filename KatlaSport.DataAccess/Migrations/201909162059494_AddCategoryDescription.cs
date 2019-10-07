@@ -15,3 +15,4 @@ namespace KatlaSport.DataAccess.Migrations
         }
     }
 }
+
