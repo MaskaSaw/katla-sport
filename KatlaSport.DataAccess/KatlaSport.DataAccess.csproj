@@ -77,6 +77,10 @@
     <Compile Include="Migrations\201910071327502_TestMigration.Designer.cs">
       <DependentUpon>201910071327502_TestMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910081239057_TestMG.cs" />
+    <Compile Include="Migrations\201910081239057_TestMG.Designer.cs">
+      <DependentUpon>201910081239057_TestMG.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910071327502_TestMigration.resx">
       <DependentUpon>201910071327502_TestMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910081239057_TestMG.resx">
+      <DependentUpon>201910081239057_TestMG.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
