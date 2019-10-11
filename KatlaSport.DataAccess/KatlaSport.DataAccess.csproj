@@ -82,13 +82,9 @@
     <Compile Include="ManagerCatalogue\Manager.cs" />
     <Compile Include="ManagerCatalogue\ManagerConfiguration.cs" />
     <Compile Include="ManagerCatalogue\ManagerContext.cs" />
-    <Compile Include="Migrations\201910071804551_AddNewEntities.cs" />
-    <Compile Include="Migrations\201910071804551_AddNewEntities.Designer.cs">
-      <DependentUpon>201910071804551_AddNewEntities.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910111154372_NewTestMigration.cs" />
-    <Compile Include="Migrations\201910111154372_NewTestMigration.Designer.cs">
-      <DependentUpon>201910111154372_NewTestMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201910111507068_NewMigration.cs" />
+    <Compile Include="Migrations\201910111507068_NewMigration.Designer.cs">
+      <DependentUpon>201910111507068_NewMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="OrderCatalogue\IOrderContext.cs" />
     <Compile Include="OrderCatalogue\Order.cs" />
@@ -126,10 +122,6 @@
     <Compile Include="Migrations\201909181034229_AddProductDescriptionManCodePrice.Designer.cs">
       <DependentUpon>201909181034229_AddProductDescriptionManCodePrice.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910071327502_TestMigration.cs" />
-    <Compile Include="Migrations\201910071327502_TestMigration.Designer.cs">
-      <DependentUpon>201910071327502_TestMigration.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -151,14 +143,8 @@
     <EmbeddedResource Include="Migrations\201909181034229_AddProductDescriptionManCodePrice.resx">
       <DependentUpon>201909181034229_AddProductDescriptionManCodePrice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910071327502_TestMigration.resx">
-      <DependentUpon>201910071327502_TestMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910071804551_AddNewEntities.resx">
-      <DependentUpon>201910071804551_AddNewEntities.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910111154372_NewTestMigration.resx">
-      <DependentUpon>201910111154372_NewTestMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910111507068_NewMigration.resx">
+      <DependentUpon>201910111507068_NewMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

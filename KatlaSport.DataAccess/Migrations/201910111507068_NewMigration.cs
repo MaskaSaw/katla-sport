@@ -2,18 +2,32 @@ namespace KatlaSport.DataAccess.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    public partial class AddNewEntities : DbMigration
+    /// <summary>
+    /// NewMigration migration.
+    /// </summary>
+    public partial class NewMigration : DbMigration
     {
         public override void Up()
         {
             CreateTable(
+                "dbo.clients",
+                c => new
+                    {
+                        client_id = c.Int(nullable: false, identity: true),
+                        client_name = c.String(),
+                        client_address = c.String(),
+                        client_city = c.String(),
+                    })
+                .PrimaryKey(t => t.client_id);
+
+            CreateTable(
                 "dbo.order",
                 c => new
-                {
-                    order_id = c.Int(nullable: false, identity: true),
-                    order_client_id = c.Int(nullable: false),
-                    order_manager_id = c.Int(nullable: false),
-                })
+                    {
+                        order_id = c.Int(nullable: false, identity: true),
+                        order_client_id = c.Int(nullable: false),
+                        order_manager_id = c.Int(nullable: false),
+                    })
                 .PrimaryKey(t => t.order_id)
                 .ForeignKey("dbo.clients", t => t.order_client_id, cascadeDelete: true)
                 .ForeignKey("dbo.managers", t => t.order_manager_id, cascadeDelete: true)
@@ -21,27 +35,16 @@ namespace KatlaSport.DataAccess.Migrations
                 .Index(t => t.order_manager_id);
 
             CreateTable(
-                "dbo.clients",
-                c => new
-                {
-                    client_id = c.Int(nullable: false, identity: true),
-                    client_name = c.String(),
-                    client_address = c.String(),
-                    client_city = c.String(),
-                })
-                .PrimaryKey(t => t.client_id);
-
-            CreateTable(
                 "dbo.managers",
                 c => new
-                {
-                    manager_id = c.Int(nullable: false, identity: true),
-                    manager_name = c.String(),
-                    manager_surname = c.String(),
-                    manager_age = c.Int(nullable: false),
-                    manager_chiefid = c.Int(nullable: false),
-                    manager_photo = c.String(),
-                })
+                    {
+                        manager_id = c.Int(nullable: false, identity: true),
+                        manager_name = c.String(),
+                        manager_surname = c.String(),
+                        manager_age = c.Int(nullable: false),
+                        manager_chiefid = c.Int(nullable: true),
+                        manager_photo = c.String(),
+                    })
                 .PrimaryKey(t => t.manager_id)
                 .ForeignKey("dbo.managers", t => t.manager_chiefid)
                 .Index(t => t.manager_chiefid);
@@ -56,8 +59,8 @@ namespace KatlaSport.DataAccess.Migrations
             DropIndex("dbo.order", new[] { "order_manager_id" });
             DropIndex("dbo.order", new[] { "order_client_id" });
             DropTable("dbo.managers");
-            DropTable("dbo.clients");
             DropTable("dbo.order");
+            DropTable("dbo.clients");
         }
     }
 }

@@ -63,17 +63,19 @@ namespace KatlaSport.WebApi.Controllers
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
-        public async Task<IHttpActionResult> AddManager()
+        public async Task<IHttpActionResult> AddManager([FromBody] ManagerRequest createRequest)
         {
-            var httprequest = HttpContext.Current.Request;
+            /*var httprequest = HttpContext.Current.Request;
             var file = httprequest.Files["Image"];
             var data = httprequest.Form["data"];
-            var createRequest = JsonConvert.DeserializeObject<ManagerRequest>(data);
+            var createRequest = JsonConvert.DeserializeObject<ManagerRequest>(data);*/
+
+            var file = createRequest.Photo;
 
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"].ToString());
 
             CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-            CloudBlobContainer blobContainer = blobClient.GetContainerReference("webappstoragedotnet-imagecontainer");
+            CloudBlobContainer blobContainer = blobClient.GetContainerReference("mycontainer");
             await blobContainer.CreateIfNotExistsAsync();
             await blobContainer.SetPermissionsAsync(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
 

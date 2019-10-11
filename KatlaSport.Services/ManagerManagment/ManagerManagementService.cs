@@ -40,7 +40,7 @@ namespace KatlaSport.Services.ManagerManagement
             return managers;
         }
 
-        public async Task<Manager> CreateManagerAsync(ManagerRequest managerRequest, CloudBlobContainer blobContainer, HttpPostedFile file)
+        public async Task<Manager> CreateManagerAsync(ManagerRequest managerRequest, CloudBlobContainer blobContainer, string file)
         {
             var dbManager = await _context.Managers.Where(m => (m.Surname == managerRequest.Surname && m.Name == managerRequest.Name)).ToArrayAsync();
             if (dbManager.Length > 0)
@@ -48,14 +48,24 @@ namespace KatlaSport.Services.ManagerManagement
                 throw new RequestedResourceHasConflictException("code");
             }
 
-            var fileName = GetRandomBlobName(file.FileName);
+            /*var fileName = GetRandomBlobName(file.FileName);
             CloudBlockBlob blob = blobContainer.GetBlockBlobReference(fileName);
             using (var fileStream = file.InputStream)
             {
                 await blob.UploadFromStreamAsync(fileStream);
             }
 
-            managerRequest.Photo = blob.Uri.ToString();
+            managerRequest.Photo = blob.Uri.ToString();*/
+
+            if (!string.IsNullOrEmpty(file))
+            {
+                var fileName = Path.GetFileName(file);
+                CloudBlockBlob blob = blobContainer.GetBlockBlobReference(fileName);
+
+                    await blob.UploadFromFileAsync(file);
+
+                managerRequest.Photo = blob.Uri.ToString();
+            }
 
             var manager = Mapper.Map<ManagerRequest, Manager>(managerRequest);
             _context.Managers.Add(manager);

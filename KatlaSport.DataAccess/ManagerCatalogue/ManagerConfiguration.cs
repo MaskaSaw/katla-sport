@@ -13,7 +13,7 @@ namespace KatlaSport.DataAccess.ManagerCatalogue
             Property(i => i.Name).HasColumnName("manager_name");
             Property(i => i.Surname).HasColumnName("manager_surname");
             Property(i => i.Age).HasColumnName("manager_age");
-            Property(i => i.ChiefId).HasColumnName("manager_chiefid");
+            Property(i => i.ChiefId).HasColumnName("manager_chiefid").IsOptional();
             Property(i => i.Photo).HasColumnName("manager_photo");
         }
     }

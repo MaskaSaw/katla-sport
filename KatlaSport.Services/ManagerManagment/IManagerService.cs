@@ -12,7 +12,7 @@ namespace KatlaSport.Services.ManagerManagement
 
         Task<ManagerRequest> GetManagerAsync(int managerId);
 
-        Task<Manager> CreateManagerAsync(ManagerRequest manager, CloudBlobContainer blobContainer, HttpPostedFile file);
+        Task<Manager> CreateManagerAsync(ManagerRequest manager, CloudBlobContainer blobContainer, string file);
 
         Task<Manager> UpdateManagerAsync(int managerId, ManagerRequest updateManager, CloudBlobContainer blobContainer, HttpPostedFile file);
 

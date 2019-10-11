@@ -64,34 +64,34 @@ namespace KatlaSport.WebApi.Controllers
             return Created<ClientRequest>(location, createRequest);
         }
 
-        [HttpPut]
-        [Route("{id:int:min(1)}")]
+        [HttpPost]
+        [Route("update/{id:int:min(1)}")]
         [SwaggerResponse(HttpStatusCode.NoContent, Description = "Updates an existed client.")]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
         [SwaggerResponse(HttpStatusCode.NotFound)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
-        public async Task<IHttpActionResult> UpdateClient([FromUri] int clientId, [FromBody] ClientRequest updateRequest)
+        public async Task<IHttpActionResult> UpdateClient([FromUri] int id, [FromBody] ClientRequest updateRequest)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await _clientService.UpdateClientAsync(clientId, updateRequest);
+            await _clientService.UpdateClientAsync(id, updateRequest);
             return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent));
         }
 
-        [HttpDelete]
-        [Route("{id:int:min(1)}")]
+        [HttpPost]
+        [Route("delete/{id:int:min(1)}")]
         [SwaggerResponse(HttpStatusCode.NoContent, Description = "Deletes an existed client.")]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
         [SwaggerResponse(HttpStatusCode.NotFound)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
-        public async Task<IHttpActionResult> DeleteClient([FromUri] int clientId)
+        public async Task<IHttpActionResult> DeleteClient([FromUri] int id)
         {
-            await _clientService.DeleteClientAsync(clientId);
+            await _clientService.DeleteClientAsync(id);
             return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent));
         }
     }
