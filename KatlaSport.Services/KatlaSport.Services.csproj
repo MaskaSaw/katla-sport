@@ -100,6 +100,10 @@
     <Compile Include="ManagerManagment\ManagerManagementService.cs" />
     <Compile Include="ManagerManagment\ManagerMappingProfile.cs" />
     <Compile Include="ManagerManagment\ManagerRequest.cs" />
+    <Compile Include="OrderManagement\IOrderService.cs" />
+    <Compile Include="OrderManagement\OrderManagementService.cs" />
+    <Compile Include="OrderManagement\OrderMappingProfile.cs" />
+    <Compile Include="OrderManagement\OrderRequest.cs" />
     <Compile Include="ProductManagement\ProductCatalogueService.cs" />
     <Compile Include="ProductManagement\ProductCategoryService.cs" />
     <Compile Include="ProductManagement\ProductManagementMappingProfile.cs" />
@@ -125,8 +129,6 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="OrderManagement\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
