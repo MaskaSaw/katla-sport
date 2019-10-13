@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using KatlaSport.DataAccess.ClientCatalogue;
 
-namespace KatlaSport.Services.ClientManagment
+namespace KatlaSport.Services.ClientManagement
 {
     public sealed class ClientMappingProfile : Profile
     {

@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KatlaSport.Services.ClientManagment
+namespace KatlaSport.Services.ClientManagement
 {
-    internal class ClientManagmentService : IClientService
+    internal class ClientManagementService : IClientService
     {
-        IClientContext _context;
+        private IClientContext _context;
 
-        public ClientManagmentService(IClientContext context)
+        public ClientManagementService(IClientContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
@@ -32,7 +32,6 @@ namespace KatlaSport.Services.ClientManagment
                 throw new RequestedResourceNotFoundException();
             }
 
-            //var companys = Mapper.Map<Company, CompanyRequest>(dbcompanys[0]);
             return dbClients[0];
         }
 

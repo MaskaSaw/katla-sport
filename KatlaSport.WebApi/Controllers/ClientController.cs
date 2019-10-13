@@ -4,7 +4,8 @@ using Swashbuckle.Swagger.Annotations;
 using System;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using KatlaSport.Services.ClientManagment;
+using KatlaSport.Services.ClientManagement;
+using KatlaSport.Services.Repositories;
 using System.Net;
 using System.Threading.Tasks;
 using System.Net.Http;
@@ -18,11 +19,12 @@ namespace KatlaSport.WebApi.Controllers
     [SwaggerResponseRemoveDefaults]
     public class ClientController : ApiController
     {
-        private readonly IClientService _clientService;
+        // private readonly IClientService _clientService;
+        private readonly IClientRepository _clientRepository;
 
-        public ClientController(IClientService clientService)
+        public ClientController(IClientRepository clientRepository)
         {
-            _clientService = clientService ?? throw new ArgumentNullException(nameof(clientService));
+            _clientRepository = clientRepository ?? throw new ArgumentNullException(nameof(clientRepository));
         }
 
         [HttpGet]
@@ -31,7 +33,7 @@ namespace KatlaSport.WebApi.Controllers
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
         public async Task<IHttpActionResult> GetClients()
         {
-            var clients = await _clientService.GetClientsAsync();
+            var clients = await _clientRepository.GetItems();
             return Ok(clients);
         }
 
@@ -42,7 +44,7 @@ namespace KatlaSport.WebApi.Controllers
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
         public async Task<IHttpActionResult> GetClient(int clientId)
         {
-            var client = await _clientService.GetClientAsync(clientId);
+            var client = await _clientRepository.GetItem(clientId);
             return Ok(client);
         }
 
@@ -59,7 +61,7 @@ namespace KatlaSport.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var client = await _clientService.CreateClientAsync(createRequest);
+            var client = await _clientRepository.Create(createRequest);
             var location = string.Format("/api/clients/{0}", client.Id);
             return Created<ClientRequest>(location, createRequest);
         }
@@ -78,7 +80,7 @@ namespace KatlaSport.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            await _clientService.UpdateClientAsync(id, updateRequest);
+            await _clientRepository.Update(id, updateRequest);
             return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent));
         }
 
@@ -91,7 +93,7 @@ namespace KatlaSport.WebApi.Controllers
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
         public async Task<IHttpActionResult> DeleteClient([FromUri] int id)
         {
-            await _clientService.DeleteClientAsync(id);
+            await _clientRepository.Delete(id);
             return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent));
         }
     }

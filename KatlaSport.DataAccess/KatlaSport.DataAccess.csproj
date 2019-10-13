@@ -86,6 +86,10 @@
     <Compile Include="Migrations\201910111507068_NewMigration.Designer.cs">
       <DependentUpon>201910111507068_NewMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910131250498_ClientMigration.cs" />
+    <Compile Include="Migrations\201910131250498_ClientMigration.Designer.cs">
+      <DependentUpon>201910131250498_ClientMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="OrderCatalogue\IOrderContext.cs" />
     <Compile Include="OrderCatalogue\Order.cs" />
     <Compile Include="OrderCatalogue\OrderContext.cs" />
@@ -145,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910111507068_NewMigration.resx">
       <DependentUpon>201910111507068_NewMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910131250498_ClientMigration.resx">
+      <DependentUpon>201910131250498_ClientMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
