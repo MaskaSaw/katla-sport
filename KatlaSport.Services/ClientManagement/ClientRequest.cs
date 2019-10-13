@@ -3,10 +3,6 @@
     public class ClientRequest
     {
         /// <summary>
-        /// Gets or sets a company ID.
-        /// </summary>
-        public int Id { get; set; }
-        /// <summary>
         /// Gets or sets a company Name.
         /// </summary>
         public string Name { get; set; }
