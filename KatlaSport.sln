@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2043
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KatlaSport.WebApi", "KatlaSport.WebApi\KatlaSport.WebApi.csproj", "{2AED0D94-B116-41E2-B5A0-C8CE7F5B0407}"
 EndProject
