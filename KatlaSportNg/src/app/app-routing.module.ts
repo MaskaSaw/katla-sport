@@ -12,6 +12,8 @@ import { ProductCategoryProductListComponent } from './product-management/lists/
 import { ProductListComponent } from './product-management/lists/product-list.component';
 import { ClientListComponent } from './client-management/lists/client-list.component';
 import { ClientFormComponent } from './client-management/form/client-form.component';
+import { OrderListComponent } from './order-management/lists/order-list.component';
+import { OrderFormComponent } from './order-management/form/order-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -33,6 +35,9 @@ const routes: Routes = [
   { path: 'clients', component: ClientListComponent },
   { path: 'client/:id', component: ClientFormComponent },
   { path: 'client', component: ClientFormComponent },
+  { path: 'orders', component: OrderListComponent },
+  { path: 'order/:id', component: OrderFormComponent },
+  { path: 'order', component: OrderFormComponent },
 ];
 
 @NgModule({

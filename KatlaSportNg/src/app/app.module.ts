@@ -21,6 +21,8 @@ import { ProductCategoryService } from 'app/product-management/services/product-
 import { ProductService } from 'app/product-management/services/product.service';
 import { ClientListComponent } from './client-management/lists/client-list.component';
 import { ClientFormComponent } from './client-management/form/client-form.component';
+import { OrderListComponent } from './order-management/lists/order-list.component';
+import { OrderFormComponent } from './order-management/form/order-form.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { ClientFormComponent } from './client-management/form/client-form.compon
     HiveSectionListComponent,
     ClientListComponent,
     ClientFormComponent,
+    OrderListComponent,
+    OrderFormComponent,
   ],
   imports: [
     // Angular imports
