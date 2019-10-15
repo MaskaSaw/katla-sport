@@ -23,6 +23,8 @@ import { ClientListComponent } from './client-management/lists/client-list.compo
 import { ClientFormComponent } from './client-management/form/client-form.component';
 import { OrderListComponent } from './order-management/lists/order-list.component';
 import { OrderFormComponent } from './order-management/form/order-form.component';
+import { ManagerListComponent } from './manager-management/lists/manager-list.component';
+import { ManagerFormComponent } from './manager-management/form/manager-form.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { OrderFormComponent } from './order-management/form/order-form.component
     ClientFormComponent,
     OrderListComponent,
     OrderFormComponent,
+    ManagerListComponent,
+    ManagerFormComponent,
   ],
   imports: [
     // Angular imports
