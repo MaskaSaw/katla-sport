@@ -63,14 +63,12 @@ namespace KatlaSport.WebApi.Controllers
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
-        public async Task<IHttpActionResult> AddManager([FromBody] ManagerRequest createRequest)
+        public async Task<IHttpActionResult> AddManager()
         {
-            /*var httprequest = HttpContext.Current.Request;
+            var httprequest = HttpContext.Current.Request;
             var file = httprequest.Files["Image"];
             var data = httprequest.Form["data"];
-            var createRequest = JsonConvert.DeserializeObject<ManagerRequest>(data);*/
-
-            var file = createRequest.Photo;
+            var createRequest = JsonConvert.DeserializeObject<ManagerRequest>(data);
 
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"].ToString());
 
